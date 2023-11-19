@@ -45,7 +45,7 @@ CREATE TABLE review (
     review_id INT NOT NULL AUTO_INCREMENT,
     user_id INT NOT NULL,
     location_id INT NOT NULL,
-    stars DECIMAL NOT NULL,
+    stars FLOAT NOT NULL,
     comment VARCHAR(256),
     review_image LONGBLOB,
     PRIMARY KEY (review_id)
