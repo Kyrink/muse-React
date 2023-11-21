@@ -1,10 +1,12 @@
+## DATA
 
-  # muse React
+# Review and user data
+- We have used the faker library to generate our users and reviews. The faker library generates fake data types, including names, addresses, and emails. 
+- We have made two scripts, one named review_faker.py and the other user_faker.py.
+- Currently, user_faker.py makes CSV with passwords currently stored in db as strings, but in the end, passwords will be stored as a hash.
+ 
+# Location data
 
-  Note: Please ensure you have installed <code><a href="https://nodejs.org/en/download/">nodejs</a></code>
-
-  To preview and run the project on your device:
-  1) Open project folder in <a href="https://code.visualstudio.com/download">Visual Studio Code</a>
-  2) In the terminal, run `npm install`
-  3) Run `npm start` to view project in browser
-  
+- We have tried to make location data authentic. Currently, it stores a mix of authentic and made-up locations. We have separated authentic data into separate CSV files.
+- Most of the location data is scraped, some manually and some using image_scraper.py.
+- Once this CSV file is filled with real locations, it will be the only CSV file used to populate the database. All other tables will depend on user input.
