@@ -1,3 +1,5 @@
+import json
+
 import mysql.connector
 import hashlib
 import socket
@@ -11,18 +13,20 @@ server.listen()
 
 def handle_connection(c):
     config_file = "../db_src/connectorConfig.json"
-    salt = '9hz'
+    with open(config_file, "r") as f:
+        config = json.load(f)
+    connection_config = config["mysql"]
     c.send("Username: ".encode())
     username = c.recv(1024).decode()
     c.send("Password: ".encode())
-    password = c.recv(1024)
-    salted_password = salt + password
-    hashed_password = hashlib.sha256(salted_password.encode()).hexdigest()
+    password = c.recv(1024) + b'9zh'
+    password = hashlib.sha256(password).hexdigest()
+    print(password)
 
-    conn = mysql.connector.connect(*config_file)
+    conn = mysql.connector.connect(**connection_config)
     cur = conn.cursor()
 
-    cur.execute("SELECT * FROM user WHERE displayName = ? AND password = ?", (username, hashed_password))
+    cur.execute("SELECT * FROM user WHERE displayName = %s AND password = %s", (username, password))
 
     if cur.fetchall():
         c.send("Login successful!".encode())
