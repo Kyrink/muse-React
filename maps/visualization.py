@@ -1,6 +1,5 @@
 import json
 import mysql.connector
-import pandas as pd
 import folium
 from folium.plugins import MarkerCluster
 
@@ -10,17 +9,17 @@ with open(config_file, "r") as f:
     connection_config = config["mysql"]
     conn = mysql.connector.connect(**connection_config)
 
-m = folium.Map(location=[43.6231, -70.4007], tiles='OpenStreetMap', zoom_start=12)
+m = folium.Map(location=[43.6590368, -70.2569226], tiles='OpenStreetMap', zoom_start=13)
+
 cursor = conn.cursor()
 
-cursor.execute("SELECT latitude, longitude, location_name, location_type FROM artLocation")
+cursor.execute("SELECT latitude, longitude, address, location_name, location_type FROM artLocation")
 locations = cursor.fetchall()
 
 conn.close()
 markerCluster = MarkerCluster().add_to(m)
 for location in locations:
-    lat, lon, popup, type = location
-
+    lat, lon, address, name, type = location
     if lat is not None and lon is not None:
         if type == 'Statue':
             color = 'blue'
@@ -34,7 +33,8 @@ for location in locations:
             color = 'purple'
         elif type == 'Event Venue':
             color = 'orange'
-        folium.Marker(location=[lat, lon], popup=popup, icon=folium.Icon(color=color)).add_to(markerCluster)
+        popup_content = f"<b>Name:</b> {name}<br><b>Address:</b> {address}<br><b>Type:</b> {type}"
+        folium.Marker(location=[lat, lon], popup=popup_content, icon=folium.Icon(color=color)).add_to(markerCluster)
     else:
         print("Invalid latitude or longitude values. Skipping Marker creation.")
 
