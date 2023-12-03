@@ -1,55 +1,49 @@
-const ArtCard = ({ dimensionCode, imageDimensions }) => {
+import { useNavigate } from 'react-router-dom';
+
+const ArtCard = ({ title, description, imageUrl, rating }) => {
+  const navigate = useNavigate();
+  const renderStars = () => {
+    let stars = [];
+    for (let i = 0; i < 5; i++) {
+      stars.push(
+        <img
+          key={i}
+          className="w-6 h-6"
+          alt={`Star ${i < rating ? 'filled' : 'empty'}`}
+          src={i < rating ? "/star-filled.svg" : "/star-empty.svg"}
+        />
+      );
+    }
+    return stars;
+  };
+
+  const handleLearnMoreClick = () => {
+    navigate('/location-view');
+  }
+
   return (
-    <div className="absolute top-[0px] left-[0px] bg-whitesmoke-200 w-[305.1px] h-[499.4px] flex flex-col items-start justify-start text-left text-[22.16px] text-black font-helvetica-neue">
-      <img
-        className="self-stretch flex-1 relative max-w-full overflow-hidden max-h-full object-cover"
-        alt=""
-        src={dimensionCode}
-      />
-      <div className="self-stretch flex flex-col items-start justify-start p-[23.641746520996094px] gap-[17.73px]">
-        <div className="self-stretch flex flex-col items-start justify-start gap-[8.87px]">
-          <h1 className="m-0 self-stretch relative text-inherit leading-[150%] font-medium font-inherit">
-            Bomb Diggity Art
-          </h1>
-          <div className="flex flex-row items-start justify-start" id="star">
-            <img
-              className="relative w-[17.7px] h-[17.7px] overflow-hidden shrink-0"
-              alt=""
-              src={imageDimensions}
-            />
-            <img
-              className="relative w-[17.7px] h-[17.7px] overflow-hidden shrink-0"
-              alt=""
-              src="/star-rate2.svg"
-            />
-            <img
-              className="relative w-[17.7px] h-[17.7px] overflow-hidden shrink-0"
-              alt=""
-              src="/star-rate3.svg"
-            />
-            <img
-              className="relative w-[17.7px] h-[17.7px] overflow-hidden shrink-0"
-              alt=""
-              src="/star-rate4.svg"
-            />
-            <img
-              className="relative w-[17.7px] h-[17.7px] overflow-hidden shrink-0"
-              alt=""
-              src="/star-rate5.svg"
-            />
-          </div>
-          <span className="self-stretch relative text-sm-3 leading-[150%] font-light">
-            {" "}
-            Vibrant fusion of eclectic artistry and community spirit.
-          </span>
-        </div>
-        <button
-          className="cursor-pointer [border:none] py-[8.865654945373535px] px-[23.641746520996094px] bg-darkslategray rounded-[2.22px] h-[41.4px] flex flex-row items-center justify-center box-border"
-          id="learn-more"
-        >
-          <div className="relative text-sm-3 font-helvetica-neue text-white text-left">
+    <div className="flex flex-col lg:flex-row">
+      <div className="bg-whitesmoke-200 w-full lg:w-[413px] h-[676px] flex flex-col items-start">
+        <img
+          className="object-cover w-full h-2/3"
+          alt={title}
+          src={imageUrl}
+        />
+        <div className="p-8 flex flex-col gap-6">
+          <h1 className="text-xl font-medium">{title}</h1>
+          <div className="flex">{renderStars()}</div>
+          <span className="text-lg font-light">{description}</span>
+          <button className="bg-darkslategray text-white py-3 px-8 rounded"
+            id="Learn_more_btn"
+            onClick={handleLearnMoreClick}
+          >
             Learn more
-          </div>
+          </button>
+        </div>
+      </div>
+      <div className="flex items-end ml-[-45px] w-8 h-12">
+        <button className="rounded bg-white p-1">
+          {/* Icon or Image for Like Button */}
         </button>
       </div>
     </div>
@@ -57,3 +51,4 @@ const ArtCard = ({ dimensionCode, imageDimensions }) => {
 };
 
 export default ArtCard;
+

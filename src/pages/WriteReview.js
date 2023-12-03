@@ -4,56 +4,7 @@ import WriteReviewCard from "../components/WriteReviewCard";
 const WriteReview = () => {
   return (
     <div className="relative bg-whitesmoke-100 w-full h-[1024px] overflow-hidden">
-      <header
-        className="absolute top-[-1px] left-[-1px] box-border w-[1442px] h-[90px] flex flex-row items-center justify-between py-0 px-[60px] text-left text-base text-black font-helvetica-neue border-[1px] border-solid border-darkslategray"
-        id="navBar"
-      >
-        <div className="flex flex-row items-center justify-center gap-[56px]">
-          <button
-            className="cursor-pointer [border:none] p-0 bg-[transparent] relative text-17xl leading-[100%] font-bold font-helvetica-neue text-black text-left flex items-end w-24 h-7 shrink-0"
-            id="logoButton"
-          >
-            muse
-          </button>
-          <nav
-            className="m-0 flex flex-row items-center justify-center gap-[32px]"
-            id="nav options"
-          >
-            <button
-              className="cursor-pointer [border:none] p-0 bg-[transparent] relative text-base font-helvetica-neue text-gray-500 text-left inline-block"
-              id="howitworks"
-            >
-              How it works
-            </button>
-            <button
-              className="cursor-pointer [border:none] p-0 bg-[transparent] relative text-base font-helvetica-neue text-gray-500 text-left inline-block"
-              id="inspireMe"
-            >
-              Inspire Me
-            </button>
-            <button
-              className="cursor-pointer [border:none] p-0 bg-[transparent] relative text-base font-helvetica-neue text-gray-500 text-left inline-block"
-              id="search"
-            >
-              Search
-            </button>
-            <button
-              className="cursor-pointer [border:none] p-0 bg-[transparent] relative text-base font-helvetica-neue text-gray-500 text-left inline-block"
-              id="viewMap"
-            >
-              View Map
-            </button>
-          </nav>
-        </div>
-        <div className="self-stretch flex flex-row items-center justify-center">
-          <Link
-            className="cursor-pointer [text-decoration:none] relative font-medium text-[inherit]"
-            to="/login"
-          >
-            Log in
-          </Link>
-        </div>
-      </header>
+      <NavBar/>
       <main className="absolute top-[139px] left-[0px] w-[1356px] overflow-hidden flex flex-col items-end justify-center py-0 pr-2.5 pl-0 box-border">
         <section className="w-[1271px] h-[1041px] overflow-hidden shrink-0 flex flex-row items-start justify-start pt-[0.0001220703125px] px-0 pb-0 box-border gap-[60px] text-left text-[50px] text-black font-helvetica-neue">
           <div

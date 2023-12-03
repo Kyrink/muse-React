@@ -1,4 +1,4 @@
-const LoginOption = ({ onClose }) => {
+const LoginOption = ({ onClose, onLogin, onEmailLogin }) => {
   return (
     <div className="rounded-3xs bg-white w-[550px] h-[650px] overflow-hidden flex flex-row items-start justify-end py-[30px] px-[42px] box-border gap-[27px] max-w-full max-h-full">
       <section
@@ -36,7 +36,8 @@ const LoginOption = ({ onClose }) => {
               </button>
               <button
                 className="cursor-pointer py-3 pr-[60px] pl-4 bg-[transparent] self-stretch rounded-11xl box-border h-14 flex flex-row items-center justify-center gap-[50px] border-[2px] border-solid border-black"
-                id="sign-in-with-email"
+                id="continue-with-email"
+                onClick={onEmailLogin}
               >
                 <img
                   className="relative w-[30px] h-[30px]"
@@ -45,7 +46,7 @@ const LoginOption = ({ onClose }) => {
                   src="/-icon-email.svg"
                 />
                 <span className="relative text-xl font-medium font-helvetica-neue text-black text-left">
-                  Continue with google
+                  Continue with email
                 </span>
               </button>
             </div>
@@ -78,6 +79,7 @@ const LoginOption = ({ onClose }) => {
       <button
         className="cursor-pointer [border:none] p-0 bg-[transparent] relative w-6 h-6"
         id="xButton"
+        onClick={onClose}
       >
         <img
           className="absolute h-[108.33%] w-[108.33%] top-[-4.17%] right-[-4.17%] bottom-[-4.17%] left-[-4.17%] max-w-full overflow-hidden max-h-full"
