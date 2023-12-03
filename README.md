@@ -13,5 +13,9 @@
 
 # Interactive Map
 - We used folium library to make an interactive map that displays all of the art locations from out database
-- 
-![map_done.png](map_done.png)
+- Icons indicate location type, we have user location that doesn't collect user data.
+![Finished_map.png](Finished_map.png)
+
+# Profanity filter 
+- We have added profanity filter that will clean review profanity. 
+- It has ability to detect profanity in display Name.
