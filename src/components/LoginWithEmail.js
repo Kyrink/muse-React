@@ -17,7 +17,7 @@ const LoginWithEmail = ({ onClose, onBack }) => {
     return (
         <>
             <div
-                className="rounded-3xs bg-white w-[605px] h-[830px] overflow-hidden flex flex-row items-start justify-start py-10 px-9 box-border gap-[35px]">
+                className="rounded-3xs bg-white w-[605px] h-[830px] overflow-hidden flex flex-row items-start justify-start py-10 px-9 box-border gap-[45px]">
                 <button
                     className="cursor-pointer p-0 bg-[transparent] relative rounded-81xl box-border w-6 h-6 border-[1px] border-solid border-black"
                     id="return"
@@ -35,7 +35,7 @@ const LoginWithEmail = ({ onClose, onBack }) => {
                     <div
                         className="w-[414px] h-[617px] overflow-hidden shrink-0 flex flex-col items-start justify-start gap-[41px]">
                         <div
-                            className="w-[414px] h-[443px] overflow-hidden shrink-0 flex flex-col items-start justify-start gap-[21px]">
+                            className=" z-5 w-[414px] h-[443px] overflow-hidden shrink-0 flex flex-col items-start justify-start gap-[21px] px-5">
                             <div
                                 className="w-56 h-[120px] overflow-hidden shrink-0 flex flex-col items-start justify-start gap-[62px]">
                                 <h1 className="m-0 relative text-inherit leading-[100%] font-bold font-inherit flex items-end w-24 h-7 shrink-0"
@@ -48,7 +48,7 @@ const LoginWithEmail = ({ onClose, onBack }) => {
                             <div
                                 className="w-[414px] h-[302px] overflow-hidden shrink-0 flex flex-col items-center justify-start gap-[33px] text-base text-black">
                                 <div
-                                    className="w-[414px] h-[221px] overflow-hidden shrink-0 flex flex-col items-center justify-start gap-[26px]">
+                                    className="w-[414px] h-[221px] overflow-hidden shrink-0 flex flex-col items-center justify-start gap-[26px] zIndex:99999">
                                     <div className="flex flex-col items-start justify-start gap-[9px]">
                                         <label
                                             className="cursor-pointer relative font-medium inline-block w-[120px] h-[19px] shrink-0">

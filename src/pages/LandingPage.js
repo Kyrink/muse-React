@@ -22,7 +22,7 @@ const LandingPage = () => {
       >
         <div className="relative w-[1440px] h-[754px] overflow-hidden shrink-0">
           <NavBar />
-          <div className="absolute top-[0px] left-[60px] w-[753px] h-[700px] overflow-hidden flex flex-col items-center justify-end">
+          <div className="absolute top-[235px] left-[60px] w-[753px] h-[512px] overflow-hidden flex flex-col items-center justify-end">
             <div className="w-[753px] flex flex-col items-start justify-start gap-[56px]">
               <h1
                 className="m-0 self-stretch relative text-inherit leading-[115%] font-weight:500 font-inherit"
@@ -103,5 +103,7 @@ const LandingPage = () => {
     </div>
   );
 };
+
+
 
 export default LandingPage;

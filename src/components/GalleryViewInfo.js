@@ -14,18 +14,18 @@ const GalleryViewInfo = () => {
         className="flex flex-col items-start justify-start gap-[16px]"
         id="address-review-sect"
       >
-        <h2
+        <h1
           className="m-0 relative text-inherit leading-[100%] font-bold font-inherit inline-block w-[628px]"
           id="art-location-header"
         >
           Portland Museum of Art
-        </h2>
-        <h3
+        </h1>
+        <h2
           className="m-0 relative text-9xl [text-decoration:underline] font-medium font-inherit text-darkgray-200 inline-block w-[630px] h-[38px] shrink-0"
           id="address"
         >
           7 Congress Sq, Portland, ME, 04101
-        </h3>
+        </h2>
       </div>
       <div className="self-stretch h-[351px] overflow-hidden shrink-0 flex flex-col items-start justify-start text-5xl">
         <p
