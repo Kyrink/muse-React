@@ -23,25 +23,42 @@ for location in locations:
     lat, lon, address, name, type = location
     if lat is not None and lon is not None:
         if type == 'Statue':
-            color = 'blue'
+            # icon author JM Graphic
+            icon_img = "icons/statue.png"
         elif type == 'Sculpture':
-            color = 'red'
+            #  icon author Freepik
+            icon_img = "icons/sculpture.png"
         elif type == 'Music Venue':
-            color = 'green'
+            #  icon author Freepik
+            icon_img = "icons/concert.png"
         elif type == 'Museum':
-            color = 'gray'
+            # icon author Freepik
+            icon_img = "icons/museum.png"
         elif type == 'Gallery':
-            color = 'purple'
+            # icon author Made by Made Premium
+            icon_img = 'icons/art-gallery.png'
         elif type == 'Event Venue':
-            color = 'orange'
+            #  icon author Smashicons
+            icon_img = 'icons/gazebo.png'
         popup_content = f"<b>Name:</b> {name}<br><b>Address:</b> {address}<br><b>Type:</b> {type}"
-        folium.Marker(location=[lat, lon], popup=popup_content, icon=folium.Icon(color=color)).add_to(markerCluster)
+        icon = folium.CustomIcon(
+            # icon author iconixar
+            icon_image=icon_img,
+            icon_size=(40, 40),
+            icon_anchor=(22, 22),
+            # icon author Iconjam
+            shadow_image="icons/shadow.png",
+            shadow_size=(40, 10),
+            shadow_anchor=(22, -9),
+            popup_anchor=(-3, -20),
+        )
+        folium.Marker(location=[lat, lon], popup=popup_content, icon=icon).add_to(markerCluster)
     else:
         print("Invalid latitude or longitude values. Skipping Marker creation.")
 
 icon = folium.CustomIcon(
     # icon author iconixar
-    icon_image="user.png",
+    icon_image="icons/user.png",
     icon_size=(25, 25),
     icon_anchor=(22, 22),
     popup_anchor=(-3, -20),

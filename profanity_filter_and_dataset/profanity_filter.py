@@ -59,6 +59,7 @@ def return_changed(conn):
 if __name__ == '__main__':
     config_file = "../db_src/connectorConfig.json"
     db_connection = connect_to_db(config_file)
+    check_comments_and_filter_for_profanity(db_connection)
     return_changed(db_connection)
     db_connection.close()
 
