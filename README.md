@@ -10,3 +10,8 @@
 - We have tried to make location data authentic. Currently, it stores a mix of authentic and made-up locations. We have separated authentic data into separate CSV files.
 - Most of the location data is scraped, some manually and some using image_scraper.py.
 - Once this CSV file is filled with real locations, it will be the only CSV file used to populate the database. All other tables will depend on user input.
+
+# Interactive Map
+- We used folium library to make an interactive map that displays all of the art locations from out database
+- 
+![map_done.png](map_done.png)
