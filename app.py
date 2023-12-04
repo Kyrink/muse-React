@@ -1,7 +1,5 @@
 import hashlib
-
 from flask import Blueprint, request, g, Flask, jsonify
-from werkzeug.security import check_password_hash
 import mysql.connector
 
 from flask_cors import CORS
@@ -46,11 +44,17 @@ def login():
     cursor.execute("SELECT * FROM users WHERE email = %s", (email,))
     user = cursor.fetchone()
 
-    if user and check_password_hash(user['password'], password):
+    if user and check_password(user['password'], password):
         return jsonify({'message': 'Logged in successfully!', 'success': True})
     else:
         return jsonify({'message': 'Incorrect email or password. Please try again.', 'success': False})
 
+
+def check_password(stored_hashed_password, password):
+    salt = '9zh'
+    salted_pass = password + salt
+    hashed_input = hashlib.sha256(salted_pass.encode()).hexdigest()
+    return hashed_input == stored_hashed_password
 
 @app.route('/api/search', methods=['GET', 'POST'])
 def get_location():
