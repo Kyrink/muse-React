@@ -2,7 +2,6 @@ import { useCallback } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import GalleryViewInfo from "../components/GalleryViewInfo";
 import ReviewWriteUp from "../components/ReviewWriteUp";
-import CardForm from "../components/CardForm";
 import ArtCard from "../components/ArtCard";
 import NavBar from "../components/NavBar";
 
@@ -31,9 +30,8 @@ const LocationView = () => {
           id="gallery_slider"
         >
           <div
-            className="flex-1 flex flex-col items-start justify-start gap-[48px] animate-slideUp"
+            className="flex-1 flex overflow-hidden flex-col items-start justify-start gap-[48px] animate-slideUp"
             id="left_galleryImg"
-            style={{ animationDuration: '10s', animationIterationCount: 'infinite' }}
           >
             <img
               className="relative w-[300px] h-52 object-cover"
@@ -63,12 +61,140 @@ const LocationView = () => {
               alt=""
               src="/image6@2x.png"
             />
+            <img
+              className="relative w-[300px] h-52 object-cover"
+              alt=""
+              src="/image2@2x.png"
+            />
+            <img
+              className="relative w-[300px] h-[483px] object-cover"
+              alt=""
+              src="/image3@2x.png"
+            />
+            <img
+              className="relative w-[300px] h-[203px] object-cover"
+              id="Location-view-img2"
+              alt=""
+              src="/image4@2x.png"
+            />
+            <img
+              className="relative w-[300px] h-[444px] object-cover"
+              id="Location-view-img4"
+              alt=""
+              src="/image5@2x.png"
+            />
+            <img
+              className="relative w-[300px] h-[414px] object-cover"
+              id="Location-view-img6"
+              alt=""
+              src="/image6@2x.png"
+            />
+            <img
+              className="relative w-[300px] h-52 object-cover"
+              alt=""
+              src="/image2@2x.png"
+            />
+            <img
+              className="relative w-[300px] h-[483px] object-cover"
+              alt=""
+              src="/image3@2x.png"
+            />
+            <img
+              className="relative w-[300px] h-[203px] object-cover"
+              id="Location-view-img2"
+              alt=""
+              src="/image4@2x.png"
+            />
+            <img
+              className="relative w-[300px] h-[444px] object-cover"
+              id="Location-view-img4"
+              alt=""
+              src="/image5@2x.png"
+            />
+            <img
+              className="relative w-[300px] h-[414px] object-cover"
+              id="Location-view-img6"
+              alt=""
+              src="/image6@2x.png"
+            />
+
           </div>
           <div
-            className="flex-1 flex flex-col items-start justify-start gap-[48px] animate-slideDown"
+            className="flex-1 flex overflow-hidden flex-col items-start justify-start gap-[48px] animate-slideDown"
             id="right_galleryImg"
-            style={{ animationDuration: '10s', animationIterationCount: 'infinite' }}
           >
+            <img
+              className="relative w-[300px] h-[434px] object-cover"
+              id="gallery-img"
+              alt=""
+              src="/image7@2x.png"
+            />
+            <img
+              className="relative w-[300px] h-[214px] object-cover"
+              id="Location-view-img"
+              alt=""
+              src="/image8@2x.png"
+            />
+            <img
+              className="relative w-[300px] h-[385px] object-cover"
+              id="Location-view-img3"
+              alt=""
+              src="/image9@2x.png"
+            />
+            <img
+              className="relative w-[300px] h-[255px] object-cover"
+              id="Location-view-img5"
+              alt=""
+              src="/image10@2x.png"
+            />
+            <img
+              className="relative w-[300px] h-[429px] object-cover"
+              id="Location-view-img7"
+              alt=""
+              src="/image11@2x.png"
+            />
+            <img
+              className="relative w-[300px] h-52 object-cover"
+              id="Location-view-img8"
+              alt=""
+              src="/image12@2x.png"
+            />
+            <img
+              className="relative w-[300px] h-[434px] object-cover"
+              id="gallery-img"
+              alt=""
+              src="/image7@2x.png"
+            />
+            <img
+              className="relative w-[300px] h-[214px] object-cover"
+              id="Location-view-img"
+              alt=""
+              src="/image8@2x.png"
+            />
+            <img
+              className="relative w-[300px] h-[385px] object-cover"
+              id="Location-view-img3"
+              alt=""
+              src="/image9@2x.png"
+            />
+            <img
+              className="relative w-[300px] h-[255px] object-cover"
+              id="Location-view-img5"
+              alt=""
+              src="/image10@2x.png"
+            />
+            <img
+              className="relative w-[300px] h-[429px] object-cover"
+              id="Location-view-img7"
+              alt=""
+              src="/image11@2x.png"
+            />
+            <img
+              className="relative w-[300px] h-52 object-cover"
+              id="Location-view-img8"
+              alt=""
+              src="/image12@2x.png"
+            />
             <img
               className="relative w-[300px] h-[434px] object-cover"
               id="gallery-img"

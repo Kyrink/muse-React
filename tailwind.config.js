@@ -3,6 +3,20 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      keyframes: {
+        slideUp: {
+          '0%': { transform: 'translateY(100%)' },
+          '100%': { transform: 'translateY(-100%)' },
+        },
+        slideDown: {
+          '0%': { transform: 'translateY(-100%)' },
+          '100%': { transform: 'translateY(100%)' },
+        },
+      },
+      animation: {
+        slideUp: 'slideUp 60s infinite linear',
+        slideDown: 'slideDown 60s infinite linear',
+      },
       colors: {
         whitesmoke: {
           "100": "#f7f7f7",

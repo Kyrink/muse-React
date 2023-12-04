@@ -1,96 +1,61 @@
-import { Link } from "react-router-dom";
+import React, { useEffect, useState, useRef } from 'react';
+import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
+import { OpenStreetMapProvider } from 'leaflet-geosearch';
+import NavBar from "../components/NavBar";
 
 const Map1 = () => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const provider = new OpenStreetMapProvider();
+  const mapRef = useRef(null); // Ref for the map instance
+  const markersRef = useRef([]); // Ref for the markers
+
+  useEffect(() => {
+    mapRef.current = L.map('map').setView([43.6591, -70.2568], 13);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(mapRef.current);
+  }, []);
+
+  const handleSearch = async () => {
+    if (searchQuery && mapRef.current) {
+      const results = await provider.search({ query: searchQuery });
+      if (results && results[0]) {
+        const { x, y } = results[0];
+
+        // Clear existing markers
+        markersRef.current.forEach(marker => mapRef.current.removeLayer(marker));
+        markersRef.current = [];
+
+        // Add new marker and set view
+        const newMarker = L.marker([y, x]).addTo(mapRef.current)
+          .bindPopup(results[0].label)
+          .openPopup();
+        markersRef.current.push(newMarker);
+        mapRef.current.setView([y, x], 13);
+      }
+    }
+  };
+
+  const handleInputChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
   return (
-    <div className="relative bg-whitesmoke-100 w-full h-[1024px] overflow-hidden">
-      <main
-        className="absolute top-[159px] left-[108px] rounded-3xs w-[1226px] h-[756px] overflow-hidden"
-        id="map-main"
-      >
-        <img
-          className="absolute top-[-6390px] left-[3079px] w-4 h-5 overflow-hidden"
-          alt=""
-          src="/default-marker-component.svg"
+    <div className="relative bg-whitesmoke-100 w-full h-[860px] overflow-hidden">
+      <NavBar />
+      <div className="absolute top-[100px] left-[467px] w-[493px] h-[77px] z-10" id='search-bar'>
+        <input
+          className="font-medium font-helvetica-neue text-base bg-[transparent] absolute w-full top-[0px] right-[0px] left-[0px] rounded-10xs box-border h-14 flex flex-row items-center justify-start py-3 px-4 border-[0.5px] border-solid border-gray-500"
+          value={searchQuery}
+          onChange={handleInputChange}
+          placeholder="search"
+          type="text"
+          onKeyPress={event => event.key === 'Enter' && handleSearch()}
         />
-        <main
-          className="absolute top-[0px] left-[-27px] w-[1280px] h-[941px] overflow-hidden flex flex-col items-center justify-end"
-          id="map"
-        >
-          <section
-            className="self-stretch overflow-hidden flex flex-col items-end justify-start py-[506px] px-[456.54681396484375px] bg-[url('/public/frame3@3x.png')] bg-cover bg-no-repeat bg-[top]"
-            id="map-section"
-          >
-            <address
-              className="self-stretch rounded-[8.37px] flex flex-col items-center justify-start relative gap-[4.19px] text-left text-[11.72px] text-black font-helvetica-neue"
-              id="address-popup"
-            >
-              <img
-                className="relative w-[302.7px] h-[257.6px] z-[0]"
-                alt=""
-                src="/union.svg"
-              />
-              <img
-                className="absolute my-0 mx-[!important] top-[7.5px] left-[calc(50%_-_141.75px)] rounded-[8.37px] w-[283.1px] h-[154.1px] object-cover z-[1]"
-                id="map-popup-img"
-                alt=""
-                src="/rectangle-3@2x.png"
-              />
-              <div className="my-0 mx-[!important] absolute top-[170px] left-[calc(50%_-_133.75px)] flex flex-col items-start justify-start gap-[2.51px] z-[2]">
-                <h1 className="m-0 relative text-[14.66px] font-medium font-inherit inline-block w-[266.7px] h-[16.3px] shrink-0">
-                  Portland Museum of Art
-                </h1>
-                <h2 className="m-0 relative text-inherit font-medium font-inherit text-darkgray-200 inline-block w-[263.8px] h-[15.9px] shrink-0">
-                  7 Congress Sq, Portland, ME, 04101
-                </h2>
-                <span className="relative text-silver inline-block w-[133.2px] h-[12.1px] shrink-0">
-                  1.2 miles away
-                </span>
-              </div>
-            </address>
-          </section>
-        </main>
-      </main>
-      <header
-        className="absolute top-[-1px] left-[-1px] box-border w-[1442px] h-[90px] flex flex-row items-center justify-between py-0 px-[60px] text-left text-17xl text-black font-helvetica-neue border-[1px] border-solid border-darkslategray"
-        id="nav bar"
-      >
-        <div className="flex flex-row items-center justify-center gap-[56px]">
-          <Link
-            className="cursor-pointer [text-decoration:none] relative leading-[100%] font-bold text-[inherit] flex items-end w-24 h-7 shrink-0"
-            to="/"
-          >
-            muse
-          </Link>
-          <nav
-            className="m-0 flex flex-row items-center justify-center gap-[32px] text-left text-base text-gray-500 font-helvetica-neue"
-            id="nav options"
-          >
-            <button className="cursor-pointer [border:none] p-0 bg-[transparent] relative text-base font-helvetica-neue text-gray-500 text-left inline-block">
-              How it works
-            </button>
-            <button className="cursor-pointer [border:none] p-0 bg-[transparent] relative text-base font-helvetica-neue text-gray-500 text-left inline-block">
-              Inspire Me
-            </button>
-            <button className="cursor-pointer [border:none] p-0 bg-[transparent] relative text-base font-helvetica-neue text-gray-500 text-left inline-block">
-              Search
-            </button>
-            <a className="[text-decoration:none] relative text-[inherit]">
-              View Map
-            </a>
-          </nav>
-        </div>
-        <div
-          className="self-stretch flex flex-row items-center justify-center text-base"
-          id="right_nav"
-        >
-          <Link
-            className="cursor-pointer [text-decoration:none] relative font-medium text-[inherit]"
-            to="/login"
-          >
-            Log in
-          </Link>
-        </div>
-      </header>
+      </div>
+      <div id="map" className="top-[180px] h-[600px] w-[1000px] mt- mx-auto rounded-3xs overflow-hidden"></div>
     </div>
   );
 };
