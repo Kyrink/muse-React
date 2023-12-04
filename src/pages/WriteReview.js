@@ -115,7 +115,7 @@ const WriteReview = () => {
               id="submit"
             >
               <span className="relative text-base font-medium font-helvetica-neue text-white text-left">
-                Submit
+                Submi
               </span>
             </button>
           </main>
