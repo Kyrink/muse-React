@@ -28,6 +28,18 @@ const NavBar = () => {
     navigate('/');
   };
 
+  const navigateToMap = () => {
+    navigate('/map');
+  };
+
+  const navigateToProcessSection = () => {
+    navigate('/', { state: { scrollToProcess: true } });
+  };
+
+  const navigateToInspireMe = () => {
+    navigate('/', { state: { scrollToInspireMe: true } });
+  };
+
   const openEmailLoginForm = useCallback(() => {
     setShowEmailLogin(true); // Corrected to use setShowEmailLogin
     setLoginOptionPopupOpen(false);
@@ -63,6 +75,8 @@ const NavBar = () => {
     onLogin: handleLogin
   };
 
+
+
   return (
     <>
       <header className="absolute bg-white z-20 top-0 left-0 box-border w-full h-[90px] flex flex-row items-center justify-between px-0 border-b border-solid border-darkslategray">
@@ -75,10 +89,9 @@ const NavBar = () => {
             muse
           </button>
           <nav className="m-0 top-100 flex flex-row items-center justify-center gap-[32px]">
-            <NavBarButton id="how-it-works">How it works</NavBarButton>
-            <NavBarButton id="inspire-me">Inspire Me</NavBarButton>
-            <NavBarButton id="search">Search</NavBarButton>
-            <NavBarButton id="view-map">View Map</NavBarButton>
+            <NavBarButton id="how-it-works" onClick={navigateToProcessSection}>How it works</NavBarButton>
+            <NavBarButton id="inspire-me" onClick={navigateToInspireMe}>Inspire Me</NavBarButton>
+            <NavBarButton id="view-map" onClick={navigateToMap}>View Map</NavBarButton>
           </nav>
         </ul>
         <div className="flex flex-row items-center justify-end">
@@ -86,12 +99,12 @@ const NavBar = () => {
             <button
               className="cursor-pointer p-0 bg-transparent w-11 h-12 flex items-center justify-center"
               id="user-profile-btn"
-              onClick={handleLogout} // Or whatever action you want to perform on click
+              onClick={handleLogout}
             >
               <img
                 className="rounded-full w-[62px] h-[62px] object-cover"
                 id="profile-img"
-                alt={user.name} // Assuming there's a name field in the user object
+                alt={user.name}
                 src={user.profileImg} // The path to the user's profile image
               />
             </button>

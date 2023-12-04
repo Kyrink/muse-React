@@ -1,4 +1,6 @@
 import { useCallback } from "react";
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import NavBar from "../components/NavBar";
 import InspireMe from "../components/InspireMe";
 import Footer from "../components/Footer";
@@ -6,11 +8,27 @@ import Testimonial from "../components/Testimonial";
 import ProcessSection from "../components/ProcessSection";
 
 const LandingPage = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.scrollToHowItWorks) {
+      const processSectionElement = document.getElementById("process-section");
+      if (processSectionElement) {
+        processSectionElement.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+    if (location.state?.scrollToInspireMe) {
+      const inspireMeSectionElement = document.getElementById("inspire-me-section");
+      if (inspireMeSectionElement) {
+        inspireMeSectionElement.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+  }, [location]);
 
   const onButtonClick = useCallback(() => {
-    const anchor = document.querySelector("[data-scroll-to='button']");
-    if (anchor) {
-      anchor.scrollIntoView({ block: "start" });
+    const processSectionElement = document.getElementById("process-section");
+    if (processSectionElement) {
+      processSectionElement.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   }, []);
 
@@ -93,9 +111,13 @@ const LandingPage = () => {
           id="ladingSubPage"
         >
           <main className="absolute top-[0] left-[0px] w-[1441px] h-[764] overflow-hidden flex flex-col items-center justify-start">
-            <ProcessSection />
+            <div id="process-section">
+              <ProcessSection />
+            </div>
             <Testimonial />
-            <InspireMe />
+            <div id="inspire-me-section">
+              <InspireMe />
+            </div>
             <Footer />
           </main>
         </section>

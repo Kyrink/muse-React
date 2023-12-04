@@ -1,27 +1,33 @@
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
 import WriteReviewCard from "../components/WriteReviewCard";
+import NavBar from "../components/NavBar";
 
 const WriteReview = () => {
+  // State to store the rating
+  const [rating, setRating] = useState(0);
+
+  // Function to handle rating
+  const handleRating = (rate) => {
+    setRating(rate);
+  };
   return (
     <div className="relative bg-whitesmoke-100 w-full h-[1024px] overflow-hidden">
-      <NavBar/>
-      <main className="absolute top-[139px] left-[0px] w-[1356px] overflow-hidden flex flex-col items-end justify-center py-0 pr-2.5 pl-0 box-border">
-        <section className="w-[1271px] h-[1041px] overflow-hidden shrink-0 flex flex-row items-start justify-start pt-[0.0001220703125px] px-0 pb-0 box-border gap-[60px] text-left text-[50px] text-black font-helvetica-neue">
-          <div
-            className="flex flex-col items-start justify-start gap-[42px]"
-            id="location card"
-          >
-            <h1
-              className="m-0 relative text-inherit leading-[100%] font-bold font-inherit inline-block w-[523px] h-[118px] shrink-0"
-              id="hearYou"
-            >
-              We love to hear about your experience!
-            </h1>
+      <NavBar />
+      <main className="absolute top-[139px] left-0 w-[1356px] overflow-hidden flex flex-col items-end justify-center py-0 pr-2.5 pl-0">
+        {/* Main content */}
+        <section className="w-[1271px] h-[1041px] overflow-hidden flex flex-row items-start gap-[60px]">
+
+          <div className="flex flex-col gap-[20px]">
+            <h1 className="text-[40px] font-bold w-[523px] font-helvetica-neue">We love to hear about your experience!</h1>
             <WriteReviewCard />
           </div>
-          <div className="relative box-border w-0.5 h-[787px] border-r-[2px] border-solid border-darkslategray" />
+
+          {/* Divider */}
+          <div className="w-0.5 h-[787px] border-r-[20px] border-darkslategray" />
+
+          {/* Review form */}
           <main
-            className="h-[1041px] overflow-y-auto flex flex-col items-start justify-start gap-[40px] text-left text-16xl text-black font-helvetica-neue"
+            className="h-[1041px] overflow-y-scroll flex flex-col items-start justify-start gap-[40px] text-left text-16xl text-black font-helvetica-neue"
             id="review_template"
           >
             <div className="w-[611px] h-[103px] shrink-0 flex flex-col items-start justify-start gap-[20px]">
@@ -31,32 +37,16 @@ const WriteReview = () => {
               >
                 How would you rate your experience?
               </h2>
-              <div className="relative w-[280px] h-[50.5px]" id="stars">
-                <img
-                  className="absolute h-full w-[18.04%] top-[0%] right-[81.96%] bottom-[0%] left-[0%] max-w-full overflow-hidden max-h-full"
-                  alt=""
-                  src="/-icon-star-outline.svg"
-                />
-                <img
-                  className="absolute h-full w-[18.04%] top-[0%] right-[61.46%] bottom-[0%] left-[20.5%] max-w-full overflow-hidden max-h-full"
-                  alt=""
-                  src="/-icon-star-outline1.svg"
-                />
-                <img
-                  className="absolute h-full w-[18.04%] top-[0%] right-[40.96%] bottom-[0%] left-[41%] max-w-full overflow-hidden max-h-full"
-                  alt=""
-                  src="/-icon-star-outline2.svg"
-                />
-                <img
-                  className="absolute h-full w-[18.04%] top-[0%] right-[20.46%] bottom-[0%] left-[61.5%] max-w-full overflow-hidden max-h-full"
-                  alt=""
-                  src="/-icon-star-outline3.svg"
-                />
-                <img
-                  className="absolute h-full w-[18.04%] top-[0%] right-[0%] bottom-[0%] left-[81.96%] max-w-full overflow-hidden max-h-full"
-                  alt=""
-                  src="/-icon-star-outline4.svg"
-                />
+              <div className="flex bg-transparent">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <button
+                    key={star}
+                    className={`w-12 h-14 bg-transparent ${rating >= star ? 'text-yellow-500' : 'text-gray-300'}`}
+                    onClick={() => handleRating(star)}
+                  >
+                    ★
+                  </button>
+                ))}
               </div>
             </div>
             <div className="flex flex-col items-start justify-start gap-[20px]">
@@ -83,10 +73,10 @@ const WriteReview = () => {
               >
                 Write your review
               </h2>
-              <input
-                className="font-medium font-helvetica-neue text-base bg-[transparent] rounded-10xs box-border w-[611px] h-[157px] flex flex-row items-start justify-start py-3 px-4 border-[0.5px] border-solid border-gray-500"
-                type="text"
-              />
+              <textarea
+                className="font-medium font-helvetica-neue text-base bg-[transparent] rounded-10xs box-border w-[611px] h-[157px] py-3 px-4 border-[0.5px] border-solid border-gray-500"
+                rows="5"
+              ></textarea>
             </div>
             <div className="flex flex-col items-start justify-start gap-[20px]">
               <div className="flex flex-col items-start justify-start gap-[3px]">
@@ -125,7 +115,7 @@ const WriteReview = () => {
               id="submit"
             >
               <span className="relative text-base font-medium font-helvetica-neue text-white text-left">
-                Select
+                Submit
               </span>
             </button>
           </main>
