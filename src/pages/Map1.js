@@ -3,6 +3,7 @@ import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import { OpenStreetMapProvider } from 'leaflet-geosearch';
 import NavBar from "../components/NavBar";
+import axios from 'axios';  // Import axios
 
 const Map1 = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -34,6 +35,16 @@ const Map1 = () => {
           .openPopup();
         markersRef.current.push(newMarker);
         mapRef.current.setView([y, x], 13);
+
+        // Send search query to the backend
+        try {
+          const response = await axios.post('http://localhost:5000/api/search', {
+            searchQuery: searchQuery,
+          });
+          console.log(response.data);
+        } catch (error) {
+          console.error('Error connecting to the backend:', error);
+        }
       }
     }
   };
