@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import ArtCard from './ArtCard';
+import { useEffect } from 'react';
+import axios from 'axios';
 
 const InspireMe = () => {
     const [selectedOption, setSelectedOption] = useState('museum');
