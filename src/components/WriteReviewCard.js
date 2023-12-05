@@ -13,12 +13,12 @@ const WriteReviewCard = () => {
         className="flex flex-col items-start justify-start gap-[9px]"
         id="name_and_address"
       >
-        <h3
+        <h1
           className="m-0 relative text-inherit leading-[100%] font-medium font-inherit inline-block w-[343px] h-[26px] shrink-0"
           id="locationName"
         >
           Portland Museum of Art
-        </h3>
+        </h1>
         <h3 className="m-0 relative text-xl font-medium font-inherit text-darkgray-200 inline-block w-[190px] h-[43px] shrink-0">
           <p className="m-0">{`7 Congress Sq, `}</p>
           <p className="m-0">Portland, ME, 04101</p>

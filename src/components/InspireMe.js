@@ -3,6 +3,17 @@ import ArtCard from './ArtCard';
 
 const InspireMe = () => {
     const [selectedOption, setSelectedOption] = useState('museum');
+    const [artCards, setArtCards] = useState([]);
+
+    useEffect(() => {
+        axios.get('http://localhost:3000/get_art_locations')
+            .then(response => {
+                setArtCards(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching art locations:', error);
+            });
+    }, []);
 
     const handleOptionClick = (option) => {
         setSelectedOption(option);

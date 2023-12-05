@@ -1,9 +1,10 @@
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import InputFields from "../components/InputFields";
 
 const SignUpPage = () => {
+
   useEffect(() => {
     const scrollAnimElements = document.querySelectorAll(
       "[data-animate-on-scroll]"
@@ -42,7 +43,6 @@ const SignUpPage = () => {
       <DecorativeImages />
       <InputFields />
       <TermsCheckbox />
-      <SubmitButton />
     </div>
   );
 };
@@ -112,18 +112,4 @@ const TermsCheckbox = () => (
     </div>
   </>
 );
-
-const SubmitButton = () => (
-  <>
-    <button
-      className="cursor-pointer [border:none] py-3 px-8 bg-darkslategray absolute top-[759px] left-[calc(50%_-_207px)] rounded-10xs w-[414px] flex flex-row items-center justify-center box-border hover:animate-[2s_ease_0s_infinite_normal_none_scale-up] hover:opacity-[1]"
-      id="submit"
-    >
-      <span className="flex-1 relative text-base font-medium font-helvetica-neue text-white text-center">
-        Submit
-      </span>
-    </button>
-  </>
-);
-
 export default SignUpPage;
