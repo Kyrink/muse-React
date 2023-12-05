@@ -2,9 +2,31 @@ import { useState, useCallback } from "react";
 import LoginOption from "./LoginOption";
 import PortalPopup from "./PortalPopup";
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
 const LoginWithEmail = ({ onClose, onBack }) => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
     const [isLoginOptionPopupOpen, setLoginOptionPopupOpen] = useState(false);
+
+    const handleLogin = async (email, password) => {
+        try {
+            const response = await axios.post('http://127.0.0.1:5000/login', {
+                email: email,
+                password: password
+            });
+            if (response.data.success) {
+                // Handle successful login
+                console.log('Login successful:', response.data.message);
+            } else {
+                // Handle failed login
+                console.log('Login failed:', response.data.message);
+            }
+        } catch (error) {
+            console.error('Error during login:', error);
+        }
+    };
 
     const openLoginOptionPopup = useCallback(() => {
         setLoginOptionPopupOpen(true);
@@ -48,24 +70,26 @@ const LoginWithEmail = ({ onClose, onBack }) => {
                             <div
                                 className="w-[414px] h-[302px] overflow-hidden shrink-0 flex flex-col items-center justify-start gap-[33px] text-base text-black">
                                 <div
-                                    className="w-[414px] h-[221px] overflow-hidden shrink-0 flex flex-col items-center justify-start gap-[26px] zIndex:99999">
+                                    className="w-[414px] h-[221px] overflow-hidden shrink-0 flex flex-col items-start justify-start gap-[26px] zIndex:99999">
                                     <div className="flex flex-col items-start justify-start gap-[9px]">
                                         <label
                                             className="cursor-pointer relative font-medium inline-block w-[120px] h-[19px] shrink-0">
                                             Email Address
                                         </label>
                                         <input
-                                            className="[border:none] flex font-medium font-helvetica-neue text-base bg-[transparent] w-[414px] flex-col items-center justify-center"
-                                            name="email-address" id="1" placeholder="Enter your email address" type="email" />
+                                            className="[border:none] flex font-medium font-helvetica-neue text-base bg-[transparent] w-[365px] flex-col items-center justify-center"
+                                            name="email-address" id="1" placeholder="Enter your email address" value={email}
+                                            onChange={(e) => setEmail(e.target.value)} type="email" />
                                     </div>
-                                    <div className="flex flex-col items-start justify-start gap-[10px]">
+                                    <div className=" flex flex-col items-start justify-start gap-[10px]">
                                         <label
                                             className="cursor-pointer relative font-medium inline-block w-[120px] h-[19px] shrink-0">
                                             Password
                                         </label>
                                         <input
-                                            className="[border:none] flex font-medium font-helvetica-neue text-base bg-[transparent] w-[414px] flex-col items-center justify-center"
-                                            name="password" id="1" placeholder="Enter your password" type="password" />
+                                            className="[border:none] flex font-medium font-helvetica-neue text-base bg-[transparent] w-[370px] flex-col items-center justify-center"
+                                            name="password" id="1" placeholder="Enter your password" value={password}
+                                            onChange={(e) => setPassword(e.target.value)} type="password" />
                                         <Link
                                             className="cursor-pointer [text-decoration:underline] relative font-medium text-[inherit] inline-block w-[140px] h-4 shrink-0"
                                             id="forgot-password" to="/signup-page">
@@ -75,7 +99,7 @@ const LoginWithEmail = ({ onClose, onBack }) => {
                                 </div>
                                 <button
                                     className="cursor-pointer [border:none] p-0 bg-[transparent] w-[311px] overflow-hidden flex flex-col items-center justify-start"
-                                    id="submit">
+                                    id="submit" onClick={() => handleLogin(email, password)}>
                                     <div
                                         className="self-stretch rounded-11xl bg-darkslategray h-12 flex flex-row items-center justify-center py-3 px-8 box-border">
                                         <span

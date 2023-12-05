@@ -27,7 +27,7 @@ const WriteReview = () => {
 
           {/* Review form */}
           <main
-            className="h-[1041px] overflow-y-scroll flex flex-col items-start justify-start gap-[40px] text-left text-16xl text-black font-helvetica-neue"
+            className="h-[1041px] overflow-y-scroll flex flex-col items-start justify-start gap-[25px] text-left text-16xl text-black font-helvetica-neue"
             id="review_template"
           >
             <div className="w-[611px] h-[103px] shrink-0 flex flex-col items-start justify-start gap-[20px]">
@@ -91,7 +91,7 @@ const WriteReview = () => {
                 </span>
               </div>
               <input
-                className="rounded-10xs bg-gainsboro-100 w-[466px] h-[157px] flex flex-col items-center justify-center py-3 px-4 box-border"
+                className="rounded-10xs bg-gainsboro-100 w-[250px] h-[80px] flex flex-col items-center justify-center py-3 px-4 box-border"
                 autoFocus={true}
                 type="file"
               />
@@ -115,7 +115,7 @@ const WriteReview = () => {
               id="submit"
             >
               <span className="relative text-base font-medium font-helvetica-neue text-white text-left">
-                Submi
+                Submit
               </span>
             </button>
           </main>

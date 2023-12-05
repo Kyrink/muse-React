@@ -49,9 +49,9 @@ const InspireMe = () => {
                         id="location subblock"
                     >
                         <ArtCard
-                            title="Portland Museum of Art"
-                            imageUrl="/process-016@2x.png"
-                            description={"Portland's lively downtown corner for everything artsy"}
+                            title
+                            imageUrl
+                            description
                         />
 
                         <ArtCard
