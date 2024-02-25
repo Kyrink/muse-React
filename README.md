@@ -36,4 +36,4 @@ To run Muse locally, follow these steps:
 4. Access the app at `http://localhost:3000`.
 
 ## Video or Image
-(Insert a link to a video demonstration or screenshots of the app here)
+
