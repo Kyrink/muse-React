@@ -18,7 +18,7 @@ const StarRating = () => {
 
 const TestimonialText = () => {
     return (
-        <div className="absolute top-[100px] left-0 w-[640px] flex flex-col items-start justify-start gap-[12px]">
+        <div className="absolute top-[100px] left-0 flex flex-col items-start justify-start gap-[12px]">
             <StarRating />
             <p className="m-0 self-stretch relative leading-[150%] font-light">
                 The Portland Museum of Art introduced me to mesmerizing exhibits, offering a cultural escape right in the heart of the city, especially during the trying times of the pandemic.
@@ -55,10 +55,10 @@ const NavigationArrows = () => {
 
 const TestimonialSection = () => {
     return (
-        <main className="relative w-[1441px] h-[705px]" id="testimonial">
+        <main className="relative w-full h-[705px]" id="testimonial">
             {/* Background and Image */}
-            <section className="absolute top-[0px] left-[1px] w-[1440px] h-[705px] overflow-hidden">
-                <div className="relative bg-whitesmoke-100 w-[1440px] h-[740px]" />
+            <section className="absolute w-full overflow-hidden">
+                <div className="relative bg-whitesmoke-100 h-[740px]" />
                 <img
                     className="absolute top-0 left-[60px] w-[527px] h-[593px] object-cover"
                     id="reviewImg"

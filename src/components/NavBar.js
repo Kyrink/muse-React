@@ -79,10 +79,10 @@ const NavBar = () => {
 
   return (
     <>
-      <header className="absolute bg-white z-20 top-0 left-0 box-border w-full h-[90px] flex flex-row items-center justify-between px-0 border-b border-solid border-darkslategray">
-        <ul className="m-0 flex flex-row items-center justify-center gap-[56px]">
+      <header className="sticky bg-white z-20 top-0 left-0 box-border w-full flex flex-row items-center justify-between py-5 border-b border-solid border-darkslategray">
+        <ul className="m-0 flex flex-row items-center justify-center gap-[16rem]">
           <button
-            className="cursor-pointer p-0 bg-transparent relative text-17xl leading-[100%] font-bold font-helvetica-neue text-black w-24 h-30 shrink-0"
+            className="cursor-pointer bg-transparent relative text-17xl leading-[100%] font-bold font-helvetica-neue shrink-0"
             id="brand-name"
             onClick={navigateToLandingPage}
           >

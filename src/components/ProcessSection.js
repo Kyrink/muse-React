@@ -3,7 +3,7 @@ import React from 'react';
 
 const ProcessSection = () => {
     return (
-        <main className="self-stretch overflow-hidden flex flex-col items-start justify-end py-0 pr-[3px] pl-0 gap-[2703px] text-left text-[63px] text-white font-helvetica-neue"
+        <main className="self-stretch overflow-hidden flex flex-col items-start justify-end pr-[3px] text-left text-[63px] text-white font-helvetica-neue"
         >
             <div
                 className="self-stretch bg-darkslategray flex flex-col items-start justify-end pt-[161px] px-[60px] pb-36 gap-[68px]"
@@ -26,7 +26,7 @@ const ProcessSection = () => {
                             className="cursor-pointer [border:none] p-0 bg-[transparent] relative text-lg [text-decoration:underline] font-bold font-helvetica-neue text-white text-left inline-block"
                             id="see reviews"
                         >
-                            How does it work?
+                            What does the community say?
                         </button>
                     </div>
                 </div>
@@ -38,11 +38,12 @@ const ProcessSection = () => {
                         <div className="flex-1 h-[284px] overflow-hidden flex flex-col items-start justify-start p-2.5 box-border bg-[url('/public/frame1@3x.png')] bg-cover bg-no-repeat bg-[top] md:flex-[unset] md:self-stretch sm:flex-[unset] sm:self-stretch">
                             <b className="relative leading-[100%]">02</b>
                         </div>
-                        <div className="flex-1 h-[284px] overflow-hidden flex flex-col items-start justify-start py-2.5 px-5 box-border bg-[url('/public/frame2@3x.png')] bg-cover bg-no-repeat bg-[top] md:flex-[unset] md:self-stretch sm:flex-[unset] sm:self-stretch">
+                        <div className="flex-1 h-[284px] overflow-hidden flex flex-col items-start justify-start p-2.5 box-border bg-[url('/public/image5@2x.png')] bg-cover bg-no-repeat bg-[top] md:flex-[unset] md:self-stretch sm:flex-[unset] sm:self-stretch">
                             <b className="relative leading-[100%]">03</b>
                         </div>
+
                     </div>
-                    <div className="self-stretch h-36 overflow-hidden shrink-0 flex flex-row items-start justify-start gap-[50px] text-lg lg:flex-row lg:gap-[120px] lg:items-start lg:justify-start md:flex-col md:gap-[100px] md:items-start md:justify-start">
+                    <div className="self-stretch overflow-hidden shrink-0 flex flex-row items-start justify-start gap-[50px] text-lg lg:flex-row lg:gap-[120px] lg:items-start lg:justify-start md:flex-col md:gap-[100px] md:items-start md:justify-start">
                         <div className="flex-1 flex flex-col items-start justify-start gap-[12px] md:flex-[unset] md:self-stretch">
                             <b className="self-stretch relative leading-[150%]">
                                 Explore
